@@ -1,0 +1,182 @@
+Javascript
+Note: function selectTradeType(type) {
+    const tradeTypeInfo = document.getElementById('tradeTypeInfo');
+    tradeTypeInfo.innerHTML = `Selected Trade Type: ${type}`;
+}
+
+function applyStrategy(strategy) {
+    const strategyInfo = document.getElementById('strategyInfo');
+    strategyInfo.innerText = `Currently using: ${strategy} Strategy`;
+}
+
+function setTradingInterval(interval) {
+    const timeInfo = document.getElementById('timeInfo');
+    timeInfo.innerText = `Currently trading every ${interval / 1000} seconds`;
+} 
+Css
+Note: /* Resetting styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #2980b9, #3498db);
+    color: white;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Main Section */
+main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Dashboard Stats */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Strategy and Time Controls */
+.strategy-control, .time-control {
+    margin-top: 30px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+} 
+ Html
+Note: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crypto Trading Bot Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Crypto Trading Bot</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="#history">Trade History</a></li>
+                    <li><a href="#backtest">Backtest</a></li>
+                    <li><a href="#logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>Balance</h3>
+                    <p id="balance">$5000</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Active Trades</h3>
+                    <p id="activeTrades">2</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Trade History</h3>
+                    <p><a href="#history">View History</a></p>
+                </div>
+            </div>
+            <div>
+                <h3>Select Trading Type:</h3>
+                <div id="tradeOptions">
+                    <span class="trade-option" onclick="selectTradeType('spot')">Spot Trading</span>
+                    <span class="trade-option" onclick="selectTradeType('futures')">Futures Trading</span>
+                </div>
+            </div>
+            <div id="tradeTypeInfo"></div>
+            <div class="strategy-control">
+                <h3>Choose Strategy:</h3>
+                <select id="strategySelector" onchange="applyStrategy(this.value)">
+                    <option value="RSI">RSI Strategy</option>
+                    <option value="MovingAverage">Moving Average Strategy</option>
+                    <option value="MACD">MACD Strategy</option>
+                    <option value="Custom">Custom Strategy</option>
+                </select>
+                <p id="strategyInfo">Currently using: RSI Strategy</p>
+            </div>
+            <div class="time-control">
+                <h3>Select Trading Interval:</h3>
+                <select id="timeInterval" onchange="setTradingInterval(this.value)">
+                    <option value="5000">5 seconds</option>
+                    <option value="60000">1 minute</option>
+                    <!-- Other options -->
+                </select>
+                <p id="timeInfo">Currently trading every 5 seconds</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Crypto Trading Bot</p>
+    </footer>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html> 
